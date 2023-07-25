@@ -5,7 +5,7 @@ function Register(props){
         <div className="container">
             <div className="row">
                 <div className="col-md-12 text-center">
-                    <h3 className="display-3 text-primary">Login</h3>
+                    <h3 className="display-3 text-primary">Register</h3>
                 </div>
             </div>
 
@@ -23,7 +23,7 @@ function Register(props){
                                     <input type="password" name="pass" id="pass" className="form-control" required/>
                                 </div>
                                 <div className="form-group mt-12">
-                                    <input type="submit" value="Login" className="btn btn-success" />
+                                    <input type="submit" value="Login" className="btn btn-danger" />
                                 </div>
                             </form>
                         </div>

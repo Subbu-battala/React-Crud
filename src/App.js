@@ -9,6 +9,8 @@ import Pnf from './component/Pnf';
 import Home from "./component/Home";
 import PrivateRouter from "./PrivateRoute/PrivateRouter";
 
+import { ToastContainer } from "react-toastify";
+
 function App(props){
   return(
       <BrowserRouter>

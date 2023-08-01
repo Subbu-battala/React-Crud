@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Navigate, NavLink } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 
@@ -36,6 +36,55 @@ function Details(props){
             <div className="row">
                 <div className="col-md-12 text-center">
                     <h3 className="display-3 text-primary">Details</h3>
+                </div>
+            </div>
+            
+            <div className="row">
+                <div className="col-md-12">
+                    <div className="card">
+                        <div className="card-header">
+                            <h5 className="text-center text-success"> {user.firstName} {user.lastName} </h5>
+                        </div>
+                        <div className="card-body">
+                            <div className="row">
+                                <div className="col-md-4 col-sm-12">
+                                    <div className="card">
+                                        <img src={user.image ? user.image : "#"} alt="no image" className="card-img-top" />
+                                    </div>
+                                    <div className="col-md-8 col-sm-12">
+                                        <div className="card">
+                                            <div className="card-body">
+                                                <p>
+                                                    <strong>Email</strong>
+                                                    <span className="text-success float-end"> {user.email} </span>
+                                                </p>
+                                                <p>
+                                                    <strong>User NAme</strong>
+                                                    <span className="text-success float-end"> {user.username} </span>
+                                                </p>
+                                                <p>
+                                                    <strong>Phone</strong>
+                                                    <span className="text-success float-end"> {user.phone} </span>
+                                                </p>
+                                                <p>
+                                                    <strong>Domain</strong>
+                                                    <span className="text-success float-end"> {user.domain} </span>
+                                                </p>
+                                                <p>
+                                                    <strong>Age</strong>
+                                                    <span className="text-success float-end"> {user.age} years</span>
+                                                </p>
+                                            </div>
+                                            <div className="card-footer">
+                                                <NavLink to={`/Update/${user.id}`} className="btn btn-success" > Edit </NavLink>
+                                                <botton className="btn btn-danger float-end">Delete</botton>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 

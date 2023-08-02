@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { useParams, Navigate, NavLink } from "react-router-dom";
+import { useParams, Navigate, NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 
@@ -10,6 +10,7 @@ function Details(props){
     const [user,setUser] = useState(false)
 
     const params = useParams()
+    const navigate = useNavigate()
     console.log('params=', params)
 
     const getUsers = useCallback(() => {
@@ -29,6 +30,19 @@ function Details(props){
     useEffect(() => {
         getUsers()
     },[])
+    
+    // delete user
+    const deleteUser = async (id) => {
+        if(window.confirm(`Are you sure to delete user id =${id}?`)){
+            await axios.delete(`${URL}/users/${id}`)
+                .then(res => {
+                    toast.success(`User info deleted successfully`);
+                    navigate('/')
+                }).catch(err => toast.error(err.message))
+        }else{
+            toast.warning('delete terminated')
+        }
+    } 
 
 
     return(
@@ -77,7 +91,7 @@ function Details(props){
                                             </div>
                                             <div className="card-footer">
                                                 <NavLink to={`/Update/${user.id}`} className="btn btn-success" > Edit </NavLink>
-                                                <botton className="btn btn-danger float-end">Delete</botton>
+                                                <botton className="btn btn-danger float-end" >Delete</botton>
                                             </div>
                                         </div>
                                     </div>
